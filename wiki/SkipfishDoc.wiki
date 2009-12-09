@@ -7,4 +7,30 @@
   * Copyright 2009 Google Inc, rights reserved.
   * Released under terms and conditions of the Apache License, version 2.0.
 
-==tbd==
+==Introduction==
+
+_Skipfish_ is an active web application security reconnaissance tool. The tool prepares an interactive view of the targeted site, based on the outcome of a traditional recursive crawl and dictionary-based probes. The report is additionally annotated with the outcomes of a number of (hopefully) non-disruptive security checks. The resulting report is meant to serve as a foundation for web application security assessments.
+
+Although a number of commercial and open source tools with similar functionality is readily available, _skipfish_ specifically tries to address some of the common deficiencies in these applications. Specific advantages include:
+
+  * *Extreme speed:* 500+ requests per second against responsive Internet targets (10 simultaneous connections), 2000+ requests per second on LAN / MAN networks (4 connections), and 7000+ requests against local instances (2 connections) is commonly seen, with a very modest CPU and memory footprint. Here's why:
+
+    * The tool features a multiplexing single-process, single-thread, fully asynchronous network I/O and data processing, eliminating massive memory management, scheduling, and IPC inefficiencies in competing multi-threaded clients.
+    * It uses advanced HTTP/1.1 features such as range requests, content compression, and keep-alives, as well as forced response size limiting, to keep network costs in check.
+    * All check logic is designed to minimize waste: smart response caching and frequent behavior checks are used to avoid unnecessary traffic.
+    * Almost every component - including the custom HTTP stack - is written in pure C, with performance in mind. 
+
+  * *Ease of use:* _skipfish_ is highly adaptive and reliable. The scanner: 
+
+    * Recognizes odd path- and query-based parameter semantics automatically, detects case-sensitivity, auto-completes forms.
+    * Gracefully handles certain requests being routed to several completely different backend web servers, munged, or filtered out.
+    * Builds, reorganizes, and purges wordlists on the go, selecting candidates based on content analysis, and keeping track of good picks.
+    * Understands a range of problems in client-side JavaScript code.
+    * Can be employed for periodic, time-bound assessments of arbitrarily complex sites by enabling probabilistic crawl features. 
+
+  * *Cutting-edge security checks:*  the tool is to provide unique security insights without annoying the user: 
+
+    * Most active checks are designed to avoid false positives by doing differential, three-way probes: baseline, probe that if a vulnerability is present should succeed, probe that if the vulnerability is present should fail.
+    * [http://code.google.com/p/ratproxy Ratproxy] logic is used to spot a number of subtle security problems around XSRF, XSSI, mixed content, MIME- and charset mismatches, caching issues, etc.
+    * Active security checks are capable of probing for tricky scenarios, such as stored XSS (path, parameters, headers), blind SQL or XML injection, blind shell injection, etc.
+    * Report post-processing drastically reduces the noise caused by any remaining false positives or server gimmicks by identifying repetitive patterns. 
