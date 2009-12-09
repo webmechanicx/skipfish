@@ -37,7 +37,7 @@ That said, _skipfish_ is not a silver bullet, and may be unsuitable for certain 
 
 ==What specific tests are implemented?==
 
-A rough list of tested patterns would be:
+A rough list of reported patterns would be:
 
   * High risk flaws (leading to system compromise):<p>
     * Server-side SQL injection (including blind and numerical vectors),
@@ -107,9 +107,9 @@ A rough list of tested patterns would be:
     * Conflicting MIME / charset information on less significant content,
     * OGNL-like parameter passing conventions.
 
-The scanner also provides summary overviews of document types and issue types found.
+The scanner also provides summary overviews of document types and issue types found; and an interactive view of site structure, with nodes discovered through brute-force denoted in a distinctive way.
 
-Notably absent from the list of implemented checks:
+Notably absent from the list of implemented checks are:
 
   * Buffer overflow checks. I doubt there is a reliable way to test for such problems remotely - proper buffer size checks may also result in uncaught exceptions, 500 messages, etc - but I would love to be proved wrong.
 
@@ -117,7 +117,7 @@ Notably absent from the list of implemented checks:
 
   * Fully-fledged Java<b></b>Script XSS detection. Several rudimentary checks are present in the code, but there is no proper script engine to evaluate expressions and DOM access built in.
 
-  * Vulnerabilities and links in third-party (non-browser) content (Flash, Java, PDF, etc). Contributions in this area are greatly welcome.
+  * Vulnerabilities in and link extraction for third-party, plugin-based content (Flash, Java, PDF, etc). Contributions in this area are greatly welcome.
 
 ==I want to try it out. What do I need to know?==
 
