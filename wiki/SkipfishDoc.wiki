@@ -9,31 +9,115 @@
 
 ==What is skipfish?==
 
-_Skipfish_ is an active web application security reconnaissance tool. The tool prepares an interactive view of the targeted site, based on the outcome of a traditional recursive crawl and dictionary-based probes. The report is additionally annotated with the outcomes of a number of (hopefully) non-disruptive security checks. The resulting report is meant to serve as a foundation for web application security assessments.
+_Skipfish_ is an active web application security reconnaissance tool. The tool prepares an [http://skipfish.googlecode.com/files/skipfish-screen.png interactive view] of the targeted site, based on the outcome of a traditional recursive crawl, followed by dictionary probes. The report is additionally annotated with the results of a number of (hopefully) non-disruptive security checks. The final report is meant to serve as a foundation for web application security assessments.
 
 ==Is it worth trying out?==
 
-Although a number of commercial and open source tools with similar functionality is readily available, _skipfish_ specifically tries to address some of the common deficiencies in these applications. Specific advantages include:
+Although a number of commercial and open source tools with analogous functionality is readily available (e.g., [http://cirt.net/nikto2 Nikto], [http://www.nessus.org/nessus/ Nessus]), _skipfish_ tries to address some of the common deficiencies in existing applications. Specific advantages include:
 
   * *High performance:* 500+ requests per second against responsive Internet targets (10 simultaneous connections), 2000+ requests per second on LAN / MAN networks (4 connections), and 7000+ requests against local instances (2 connections) is not uncommon, all with a very modest CPU and memory footprint. Here's why:<p>
-    * The tool features a multiplexing single-process, single-thread, fully asynchronous network I/O and data processing, eliminating massive memory management, scheduling, and IPC inefficiencies present in many multi-threaded clients.
-    * It uses advanced HTTP/1.1 features such as range requests, content compression, and keep-alives, as well as forced response size limiting, to keep network-level overhead in check.
-    * All check logic is designed to minimize waste: smart response caching and frequent behavior checks are used to avoid all unnecessary traffic.
+    * The tool features a multiplexing single-process, single-thread, fully asynchronous network I/O and data processing, eliminating massive memory management, scheduling, and IPC inefficiencies present in many multi-threaded clients.<p>
+    * It uses advanced HTTP/1.1 features such as range requests, content compression, and keep-alives, as well as forced response size limiting, to keep network-level overhead in check.<p>
+    * All check logic is designed to minimize waste: smart response caching and frequent behavior checks are used to avoid all unnecessary traffic.<p>
     * Almost every component - including the custom HTTP stack - is written in pure C, with performance in mind. 
 
   * *Ease of use:* _skipfish_ is highly adaptive and reliable. The scanner features mechanisms such as:<p>
-    * Automatic recognition of most path- and query-based parameter semantics, including aspects such as case sensitivity.
-    * Graceful handling of multi-framework sites where certain paths obey a completely different logic, or may be bunged or filtered out unexpectedly.
-    * Automatic wordlist builder based on site content analysis, promoting good picks to a persistent dictionary.
+    * Automatic recognition of most path- and query-based parameter semantics, including aspects such as case sensitivity.<p>
+    * Graceful handling of multi-framework sites where certain paths obey a completely different logic, or may be bunged or filtered out unexpectedly.<p>
+    * Automatic wordlist builder based on site content analysis, promoting good picks to a persistent dictionary.<p>
     * Probabilistic scanning features that allow periodic, time-bound assessments of arbitrarily complex sites.
 
   * *Cutting-edge security checks:*  the tool is to provide unique security insights without annoying the user:<p>
-    * Most active checks are designed to avoid false positives by doing differential, three-way probes: baseline, a probe that if a vulnerability is predicted correctly should succeed, and a probe that should in such a case reliably fail.
-    * [http://code.google.com/p/ratproxy Ratproxy] logic is used to spot a number of subtle security problems around cross-site request forgery, cross-site script inclusion, mixed content, MIME- and charset mismatches, caching issues, etc.
-    * Provided security checks are capable of spotting challenging scenarios, such as stored XSS (path, parameters, headers), blind SQL or XML injection, or blind shell injection.
-    * Report post-processing drastically reduces the noise caused by any remaining false positives or server gimmicks by identifying repetitive patterns. 
+    * Most active checks are designed to avoid false positives by doing differential, three-way probes: baseline, a probe that if a vulnerability is predicted correctly should succeed, and a probe that should in such a case reliably fail.<p>
+    * [http://code.google.com/p/ratproxy Ratproxy] logic is used to spot a number of subtle security problems around cross-site request forgery, cross-site script inclusion, mixed content, MIME- and charset mismatches, caching issues, etc.<p>
+    * Provided security checks are capable of spotting challenging scenarios, such as stored XSS (path, parameters, headers), blind SQL or XML injection, or blind shell injection.<p>
+    * Report post-processing drastically reduces the noise caused by any remaining false positives or server gimmicks by identifying repetitive patterns.
+
+That said, _skipfish_ is not a silver bullet, and may be unsuitable for certain purposes. For example, it does not satisfy most of the requirements outlined in [http://projects.webappsec.org/Web-Application-Security-Scanner-Evaluation-Criteria WASC Web Application Security Scanner Evaluation Criteria] (some of them on purpose); and unlike most other projects of this type, it does not come with an extensive database of known vulnerabilities for banner-type checks.
 
 ==What specific tests are implemented?==
+
+A rough list of tested patterns would be:
+
+  * High risk flaws (leading to system compromise):<p>
+    * Server-side SQL injection (including blind and numerical vectors),
+    * Explicit SQL-like syntax in GET or POST parameters,
+    * Server-side shell command injection (including blind vectors),
+    * Server-side XML / XPath injection (including blind vectors),
+    * Format string vulnerabilities,
+    * Integer overflow vulnerabilities.
+
+  * Medium risk flaws (leading to significant data compromises):<p>
+    * Stored and reflected XSS vectors in document body (minimal JS-based XSS support),
+    * Stored and reflected XSS vectors via HTTP redirects,
+    * Stored and reflected XSS vectors via HTTP header splitting,
+    * Directory traversal (including constrained file formats),
+    * Assorted file POIs (server-side sources, configs, etc),
+    * Attacker-supplied script / CSS inclusion vectors (stored and reflected),
+    * External untrusted script / CSS inclusion vectors,
+    * Mixed content problems on script / CSS resources (optional),
+    * Incorrect or missing MIME types on renderables,
+    * Generic MIME types on renderables,
+    * Incorrect or missing charsets on renderables,
+    * Conflicting MIME / charset info on renderables,
+    * Bad caching directives on cookie setting responses.
+
+  * Low risk issues (limited impact or low specificity):
+    * Directory listing bypass vectors,
+    * Redirection to attacker-supplied URLs (stored and reflected),
+    * Attacker-supplied embedded content (stored and reflected),
+    * External untrusted embedded content,
+    * Mixed content on non-scriptable subresources (optional),
+    * HTTP credentials in URLs,
+    * Expired or not-yet-valid SSL certificates,
+    * HTML forms with no XSRF protection,
+    * Self-signed SSL certificates,
+    * SSL certificate host name mismatches,
+    * Bad caching directives on less sensitive content.
+
+  * Internal warnings:<p>
+    * Failed resource fetch attempts,
+    * Exceeded crawl limits,
+    * Failed 404 behavior checks,
+    * IPS filtering detected,
+    * Unexpected response variations,
+    * Seemingly misclassified crawl nodes.
+
+  * Non-specific informational entries:<p>
+    * General SSL certificate info,
+    * Significantly changing HTTP cookies,
+    * Changing Server, Via, or X-* headers,
+    * New 404 signatures,
+    * Resources that cannot be accessed,
+    * Resources requiring HTTP authentication,
+    * Nodes that were linked to from elsewhere, but are missing,
+    * Server errors,
+    * All external links not classified otherwise (optional),
+    * All external e-mails (optional),
+    * All external URL redirectors (optional),
+    * Links to unknown protocols,
+    * Form fields that could not be autocompleted,
+    * All HTML forms detected,
+    * Password entry forms (for external brute-force),
+    * Numerical file names (for external brute-force),
+    * User-supplied links otherwise rendered on a page,
+    * Incorrect or missing MIME type on less significant content,
+    * Generic MIME type on less significant content,
+    * Incorrect or missing charset on less significant content,
+    * Conflicting MIME / charset information on less significant content,
+    * OGNL-like parameter passing conventions.
+
+The scanner also provides summary overviews of document types and issue types found.
+
+Notably absent from the list of implemented checks:
+
+  * Buffer overflow checks. I doubt there is a reliable way to test for such problems remotely - proper buffer size checks may also result in uncaught exceptions, 500 messages, etc - but I would love to be proved wrong.
+
+  * Variable length multibyte encoding character consumption or injection bugs. These problems are largely addressed on browser level these days.
+
+  * Fully-fledged Java<b></b>Script XSS detection. Several rudimentary checks are present in the code, but there is no proper script engine to evaluate expressions and DOM access built in.
+
+  * Vulnerabilities and links in third-party (non-browser) content (Flash, Java, PDF, etc). Contributions in this area are greatly welcome.
 
 ==I want to try it out. What do I need to know?==
 
@@ -41,7 +125,7 @@ Please do not be evil. Use _skipfish_ only against services you own, or have a p
 
 Keep in mind that all types of security testing can be disruptive. Although the scanner is not designed to carry out disruptive malicious attacks, it may accidentally interfere with the operations of the site. You must accept the risk, and plan for this possibility. Run the scanner against test instances where feasible, and be prepared to cope with the consequences if things go wrong.
 
-Note that the tool is meant to be used by security professionals, and is not a point-and-click application. If you do not have a good grasp of the fundamentals of web security, or are not sure what to make of these instructions, you will likely not find the output of this tool useful.
+Note that the tool is meant to be used by security professionals, and is experimental in nature. It may return false positives or miss obvious security problems, and in any case, is not meant to be a point-and-click application. If you do not have a good grasp of the fundamentals of web security, or are not sure what to make of these instructions, you will likely not find the output of this _skipfish_ to be of any value.
 
 ==How to run the scanner?==
 
