@@ -86,7 +86,7 @@ A rough list of tested patterns would be:
   * Non-specific informational entries:<p>
     * General SSL certificate info,
     * Significantly changing HTTP cookies,
-    * Changing Server, Via, or X-* headers,
+    * Changing Server, Via, or X-... headers,
     * New 404 signatures,
     * Resources that cannot be accessed,
     * Resources requiring HTTP authentication,
