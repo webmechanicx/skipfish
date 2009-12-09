@@ -41,7 +41,7 @@ Please do not be evil. Use _skipfish_ only against services you own, or have a p
 
 Keep in mind that all types of security testing can be disruptive. Although the scanner is not designed to carry out disruptive malicious attacks, it may accidentally interfere with the operations of the site. You must accept the risk, and plan for this possibility. Run the scanner against test instances where feasible, and be prepared to cope with the consequences if things go wrong.
 
-Note that the tool is meant to be used by security professionals. If you do not have a good understanding of the key web security topics, you will not find the output of this tool useful.
+Note that the tool is meant to be used by security professionals, and is not a point-and-click application. If you do not have a good grasp of the fundamentals of web security, or are not sure what to make of these instructions, you will likely not find the output of this tool useful.
 
 ==How to run the scanner?==
 
