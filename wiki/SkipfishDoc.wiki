@@ -62,7 +62,7 @@ A rough list of tested patterns would be:
     * Conflicting MIME / charset info on renderables,
     * Bad caching directives on cookie setting responses.
 
-  * Low risk issues (limited impact or low specificity):
+  * Low risk issues (limited impact or low specificity):<p>
     * Directory listing bypass vectors,
     * Redirection to attacker-supplied URLs (stored and reflected),
     * Attacker-supplied embedded content (stored and reflected),
