@@ -11,6 +11,8 @@
 
 _Skipfish_ is an active web application security reconnaissance tool. The tool prepares an interactive view of the targeted site, based on the outcome of a traditional recursive crawl and dictionary-based probes. The report is additionally annotated with the outcomes of a number of (hopefully) non-disruptive security checks. The resulting report is meant to serve as a foundation for web application security assessments.
 
+==Is it worth trying out?==
+
 Although a number of commercial and open source tools with similar functionality is readily available, _skipfish_ specifically tries to address some of the common deficiencies in these applications. Specific advantages include:
 
   * *High performance:* 500+ requests per second against responsive Internet targets (10 simultaneous connections), 2000+ requests per second on LAN / MAN networks (4 connections), and 7000+ requests against local instances (2 connections) is not uncommon, all with a very modest CPU and memory footprint. Here's why:<p>
@@ -31,16 +33,36 @@ Although a number of commercial and open source tools with similar functionality
     * Provided security checks are capable of spotting challenging scenarios, such as stored XSS (path, parameters, headers), blind SQL or XML injection, or blind shell injection.
     * Report post-processing drastically reduces the noise caused by any remaining false positives or server gimmicks by identifying repetitive patterns. 
 
-==Is it worth trying out?==
-
 ==What specific tests are implemented?==
 
-==How to interpret and address the issues reported?==
+==I want to try it out. What do I need to know?==
+
+Please do not be evil. Use _skipfish_ only against services you own, or have a permission to test.
+
+Keep in mind that all types of security testing can be disruptive. Although the scanner is not designed to carry out disruptive malicious attacks, it may accidentally interfere with the operations of the site. You must accept the risk, and plan for this possibility. Run the scanner against test instances where feasible, and be prepared to cope with the consequences if things go wrong.
+
+Note that the tool is meant to be used by security professionals. If you do not have a good understanding of the key web security topics, you will not find the output of this tool useful.
 
 ==How to run the scanner?==
 
 ==Too long, didn't read...==
 
+==How to interpret and address the issues reported?==
+
+Most of the problems reported by _skipfish_ should self-explanatory and straightforward to address. If you need a quick refresher on some of the more complicated topics, such as MIME sniffing, you may enjoy our [http://code.google.com/p/browsersec/wiki/Main Browser Security Handbook], however.
+
+If you still need assistance, there are several organizations that put a considerable effort into documenting and explaining many of the common web security threats, and advising the public on how to address them. I encourage you to refer to the materials published by OWASP and Web Application Security Consortium, amongst others:
+
+    * [http://www.owasp.org/index.php/Category:Principle OWASP Engineering principles]
+    * [http://www.owasp.org/index.php/Category:OWASP_Guide_Project OWASP guidelines]
+    * [http://www.webappsec.org/projects/articles/ WASC article library]
+
+Although I am happy to diagnose problems with the scanner itself, I generally cannot review or patch your applications on your behalf.
+
 ==Known limitations / feature wishlist==
 
-==Credits, contributions, suggestions==
+==Credits and feedback==
+
+_Skipfish_ is made possible thanks to the contributions of, and valuable feedback from, Google's information security engineering team.
+
+If you have any bug reports, questions, suggestions, or concerns regarding the application, the author can be reached at lcamtuf@google.com.
