@@ -4,7 +4,7 @@
 =skipfish - web application security scanner=
 
   * Written and maintained by [http://lcamtuf.coredump.cx/ Michal Zalewski] <[mailto:lcamtuf@google.com lcamtuf@google.com]>. 
-  * Copyright 2009 Google Inc, rights reserved.
+  * Copyright 2009, 2010 Google Inc, rights reserved.
   * Released under terms and conditions of the Apache License, version 2.0.
 
 ==What is skipfish?==
