@@ -35,7 +35,7 @@ A number of commercial and open source tools with analogous functionality is rea
 
 That said, _skipfish_ is not a silver bullet, and may be unsuitable for certain purposes. For example, it does not satisfy most of the requirements outlined in [http://projects.webappsec.org/Web-Application-Security-Scanner-Evaluation-Criteria WASC Web Application Security Scanner Evaluation Criteria] (some of them on purpose); and unlike most other projects of this type, it does not come with an extensive database of known vulnerabilities for banner-type checks.
 
-==What specific tests are implemented?==
+==Most curious! What specific tests are implemented?==
 
 A rough list of the security checks offered by the tool is outlined below.
 
@@ -109,7 +109,7 @@ A rough list of the security checks offered by the tool is outlined below.
 
 Along with a list of identified issues, _skipfish_ also provides summary overviews of document types and issue types found; and an interactive sitemap, with nodes discovered through brute-force denoted in a distinctive way.
 
-==I want to try it out. What do I need to know?==
+==All right, I want to try it out. What do I need to know?==
 
 First and foremost, please do not be evil. Use _skipfish_ only against services you own, or have a permission to test.
 
