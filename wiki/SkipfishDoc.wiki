@@ -159,6 +159,8 @@ Below is a list of features currently missing in _skipfish_. If you wish to impr
 
   * Standalone installation (`make install`) support.
 
+  * Config file support.
+
 ==Credits and feedback==
 
 _Skipfish_ is made possible thanks to the contributions of, and valuable feedback from, Google's information security engineering team.
