@@ -218,8 +218,7 @@ Lastly, `-f` controls the maximum number of consecutive HTTP errors you are will
 A standard, authenticated scan of a well-designed and self-contained site (warns about all external links, e-mails, mixed content, and caching header issues):
 
 {{{
-$ ./skipfish -MEU -C "AuthCookie=value" -X /logout.aspx -o output_dir \
-  http://www.example.com/
+$ ./skipfish -MEU -C "AuthCookie=value" -X /logout.aspx -o output_dir http://www.example.com/
 }}}
 
 Five-connection crawl, but no brute-force; pretending to be MSIE and caring less about ambiguous MIME or character set mismatches:
