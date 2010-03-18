@@ -306,4 +306,4 @@ $ gdb --batch -ex back ./skipfish core
 
 _Skipfish_ is made possible thanks to the contributions of, and valuable feedback from, Google's information security engineering team.
 
-If you have any bug reports, questions, suggestions, or concerns regarding the application, the author can be reached at lcamtuf@google.com.
+If you have any bug reports, questions, suggestions, or concerns regarding the application, the author can be reached at [mailto:lcamtuf@google.com lcamtuf@google.com].
