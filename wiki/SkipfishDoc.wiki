@@ -119,7 +119,9 @@ Also note that the tool is meant to be used by security professionals, and is ex
 
 ==How to run the scanner?==
 
-Before you begin, you need to copy the desired dictionary file from `dictionaries/` to
+To compile it, simply unpack the archive and try `make`. Chances are, you will need to install [http://ftp.gnu.org/gnu/libidn/libidn-1.9.tar.gz libidn] first.
+
+Next, you need to copy the desired dictionary file from `dictionaries/` to
 `skipfish.wl`. Please read `dictionaries/README-FIRST` carefully to make the right choice. This step has a profound impact on the quality of scan results later on.
 
 Once you have the dictionary selected, you can try:
