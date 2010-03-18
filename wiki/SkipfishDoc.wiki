@@ -232,7 +232,7 @@ and timing out after 5 seconds:
 $ ./skipfish -B .example.com -O -o output_dir -t 5 http://www.example.com/
 }}}
 
-For a short list of all command-line options, try `./jellyfish -h`.
+For a short list of all command-line options, try `./skipfish -h`.
 
 ==How to interpret and address the issues reported?==
 
