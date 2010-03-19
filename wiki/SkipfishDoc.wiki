@@ -15,7 +15,7 @@ _Skipfish_ is an active web application security reconnaissance tool. It prepare
 
 A number of commercial and open source tools with analogous functionality is readily available (e.g., [http://cirt.net/nikto2 Nikto], [http://www.nessus.org/nessus/ Nessus]); stick to the one that suits you best. That said, _skipfish_ tries to address some of the common problems associated with web security scanners. Specific advantages include:
 
-  * *High performance:* 500+ requests per second against responsive Internet targets, 2000+ requests per second on LAN / MAN networks, and 7000+ requests against local instances has been observed, with a very modest CPU, network, and memory footprint. This can be attributed to:<p>
+  * *High performance:* 500+ requests per second against responsive Internet targets, 2000+ requests per second on LAN / MAN networks, and 7000+ requests against local instances have been observed, with a very modest CPU, network, and memory footprint. This can be attributed to:<p>
     * Multiplexing single-thread, fully asynchronous network I/O and data processing model that eliminates memory management, scheduling, and IPC inefficiencies present in some multi-threaded clients.<p>
     * Advanced HTTP/1.1 features such as range requests, content compression, and keep-alive connections, as well as forced response size limiting, to keep network-level overhead in check.<p>
     * Smart response caching and advanced server behavior heuristics are used to minimize unnecessary traffic.<p>
