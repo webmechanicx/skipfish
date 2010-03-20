@@ -29,7 +29,7 @@ A number of commercial and open source tools with analogous functionality is rea
 
   * *Well-designed security checks:*  the tool is meant to provide accurate and meaningful results:<p>
     * Three-step differential probes are preferred to signature checks for detecting vulnerabilities.<p>
-    * [http://code.google.com/p/ratproxy Ratproxy]-style logic is used to spot subtle security problems: cross-site request forgery, cross-site script inclusion, mixed content, issues MIME- and charset mismatches, incorrect caching directive, etc.<p>
+    * [http://code.google.com/p/ratproxy Ratproxy]-style logic is used to spot subtle security problems: cross-site request forgery, cross-site script inclusion, mixed content, issues MIME- and charset mismatches, incorrect caching directives, etc.<p>
     * Bundled security checks are designed to handle tricky scenarios: stored XSS (path, parameters, headers), blind SQL or XML injection, or blind shell injection.<p>
     * Report post-processing drastically reduces the noise caused by any remaining false positives or server gimmicks by identifying repetitive patterns.
 
