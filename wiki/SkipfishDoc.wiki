@@ -113,7 +113,7 @@ Along with a list of identified issues, _skipfish_ also provides summary overvie
 
 *First and foremost, please do not be evil. Use _skipfish_ only against services you own, or have a permission to test.* 
 
-Keep in mind that all types of security testing can be disruptive. Although the scanner is designed not to carry out disruptive malicious attacks, it may accidentally interfere with the operations of the site. You must accept the risk, and plan accordingly. Run the scanner against test instances where feasible, and be prepared to deal with the consequences if things go wrong.
+Keep in mind that all types of security testing can be disruptive. Although the scanner is designed not to carry out malicious attacks, it may accidentally interfere with the operations of the site. You must accept the risk, and plan accordingly. Run the scanner against test instances where feasible, and be prepared to deal with the consequences if things go wrong.
 
 Also note that the tool is meant to be used by security professionals, and is experimental in nature. It may return false positives or miss obvious security problems - and even when it operates perfectly, it is simply not meant to be a point-and-click application. Do not rely on its output at face value.
 
