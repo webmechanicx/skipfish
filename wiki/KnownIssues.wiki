@@ -4,7 +4,7 @@
 
 *Note: [http://code.google.com/p/skipfish/wiki/SkipfishDoc click here] for general project documentation. This document covers some frequently asked issues with _skipfish_ only.*
 
-==Problem #1: Compilation fails!==
+==Problem #1: Compilation fails==
 
 The most common reason for problems is that you do not have a properly configured build environment. Please make sure that you have the following components - and their dependencies - installed:
 
@@ -25,24 +25,33 @@ Several people also reported problems compiling on certain versions of FreeBSD (
 
 ...right after the `#include <stdlib.h>` line. If you had this problem and the workaround helped, please let me know.
 
-==Problem #2: My scan takes forever!==
+==Problem #2: My scan takes forever==
 
 The first thing to check is the number of requests per second displayed by the scanner. It should be at least 200 req/s when scanning remote targets on the Internet, and at least 1000 req/s on local networks. If it is significantly lower, your problem might be just a very slow server; in this case, try changing the `-m` parameter to see if it helps; wait a bit longer; or modify dictionary settings as outlined in `dictionaries/README-FIRST` to reduce the number of requests sent.
 
 If the reported scan speed is adequate, but the scan of a relatively small site is still taking hours, you can abort it with `Ctrl-C` and examine the generated report. If you notice recursive, nonsensical nodes in the output, or other significant abnormalities, follow the [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! logging build instructions] and contact me to have this fixed. In the meantime, you can use `-r` and `-d` options to set crawl limits, or `-X` to exclude problematic locations.
 
-If something else seems to be wrong, or if the scanner simply crashes, follow the http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! general troubleshooting instructions] and send me a log file.
+If something else seems to be wrong, or if the scanner simply crashes, follow the [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! general troubleshooting instructions] and send me a log file.
 
-==Problem #3: I'm running into display issues!==
+==Problem #3: I ran it against a "demo" vulnerable application, and...==
+
+Simulated vulnerable applications are usually very simplistic; consider [http://zero.webappsecurity.com/rootlogin.asp.bak this example] from SPI Dynamics: the script responds to certain predefined path inclusion attempts, e.g. `/etc/passwd`, but not to other, possibly smarter probes.
+
+Since journalists and novice users tend to use these test sites as a benchmark for tested products, commercial vendors generally try to account for how these demo sites are designed. With `skipfish`, this seemed to be not particularly productive.
+
+==Problem #4: I'm running into display issues==
 
 If your terminal is set to use a non-standard palette or a non-standard color scheme (e.g., black-on-white), `skipfish` output may be harder to read, or may revert your custom settings. If this is a problem, edit `config.h` and comment out the `USE_COLORS` line, then recompile.
 
 If your terminal is set to 80x25, `skipfish` statistics may not fit neatly. If this is the case, please resize to at least 100x35.
 
-==Problem #4: I can't view the report in Safari or Chrome!==
+==Problem #5: I can't view the report in Safari or Chrome==
 
 This is likely because you browsed to the report via `file:///`. Certain important security improvements implemented in these browsers have the unfortunate side effect of crippling local Java<b></b>Script. Please put the report in a local WWW root and navigate to `http://localhost/...` instead (or use Firefox).
 
 ==For issues not listed here...==
 
-Please see the general [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! issue reporting tips], and contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
+For any problems not covered on this page, and *particularly* for false positives and false negatives in scan results, please contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
+
+Have a look at the general [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! issue reporting tips] to learn how to collect log data or meaningful crash dumps.
+
