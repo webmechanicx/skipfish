@@ -51,6 +51,18 @@ Another problem is that if your terminal is set to 80x25, `skipfish` runtime sta
 
 This is likely because you browsed to the report via the `file:///` protocol. Certain important security improvements implemented in these two browsers have the unfortunate side effect of crippling local Java<b></b>Script. Please put the report in a local WWW root and navigate to `http://localhost/...` instead; or use Firefox.
 
+==Problem #6: "Abort trap" (Linux, MacOS X) or "Bus error" (FreeBSD)==
+
+This should be fixed in the current version of `skipfish`. Try the newest release, and be sure to issue `make clean all`.
+
+For the curious: the root cause is not a security bug in `skipfish`; instead, the sanity-checking allocator used in the code relies on the ability to use the memory between requested `malloc()` buffer size, and the value returned by `malloc_usable_size()`. Unfortunately, certain security mechanisms enabled by default on some OSes are incompatible with this assumption:
+
+  * The `FORTIFY_SOURCE` feature in GCC is apparently not integrated with `malloc_usable_size()`, and triggers a bogus "buffer overflow" error when this region is accessed, despite being reported as, well, usable.
+
+  * The default allocator settings in FreeBSD - nominally only intended for debugging - clobber this extended region with a 0x5A pattern to detect memory fenceposts.
+
+New versions of `skipfish` disable these features to avoid the problem.
+
 ==For issues not listed here...==
 
 For any problems not covered on this page, and *particularly* for false positives and false negatives in scan results, please contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
