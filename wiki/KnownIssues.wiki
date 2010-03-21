@@ -39,17 +39,17 @@ Simulated vulnerable applications are usually very simplistic; consider [http://
 
 Some journalists and other non-technical users tend to use these vendor-supplied test sites as a benchmark for tested products; therefore, commercial scanners generally try to account for how these demo sites are designed to score well, even if there is no actual security benefit of doing so. 
 
-With `skipfish`, and we opted to focus on real-world coverage instead. If you run into false negatives or false positives with real targets, please let me know immediately, however!
+Given that `skipfish` is an open-source project with no specific commercial incentive, I opted to focus on real-world coverage instead. Having said that, if you run into false negatives or false positives with non-simulated targets, please let me know immediately.
 
 ==Problem #4: I'm running into display issues==
 
 If your terminal is set to use a non-standard palette or a non-standard color scheme (e.g., black-on-white), `skipfish` output may be harder to read, or may revert your custom settings. If this is a problem, edit `config.h` and comment out the `USE_COLORS` line, then recompile.
 
-If your terminal is set to 80x25, `skipfish` statistics may not fit neatly. If this is the case, please resize to at least 100x35.
+Another problem is that if your terminal is set to 80x25, `skipfish` runtime statistics may not fit the screen neatly. If this is the case, please resize to at least 100x35.
 
 ==Problem #5: I can't view the report in Safari or Chrome==
 
-This is likely because you browsed to the report via `file:///`. Certain important security improvements implemented in these browsers have the unfortunate side effect of crippling local Java<b></b>Script. Please put the report in a local WWW root and navigate to `http://localhost/...` instead (or use Firefox).
+This is likely because you browsed to the report via the `file:///` protocol. Certain important security improvements implemented in these two browsers have the unfortunate side effect of crippling local Java<b></b>Script. Please put the report in a local WWW root and navigate to `http://localhost/...` instead; or use Firefox.
 
 ==For issues not listed here...==
 
