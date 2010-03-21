@@ -61,6 +61,14 @@ In addition to the list of issues found, the directory contains all the notewort
 
 If you do not want to keep this evidence, you can simply delete all the `*.dat` files recursively.
 
+==Problem #8: Memory footpring is huge, what is going on?==
+
+Skipfish should not leak any memory, but it does keep in-memory cache of all crawled documents. The default sample size limit is rather generous - 200 kB; if your site consists of 30,000 large files, you can expect several gigs to be consumed.
+
+There are several simple ways to fix this: use `-I` to narrow down the scan to interesting, dynamic locations on your server; use `-X` to exclude paths with static content tarpits; or use `-s` to limit sample size.
+
+Ultimately, it would probably make sense to store samples for which all analysis is completed on the disk; patches welcome.
+
 ==For issues not listed here...==
 
 For any problems not covered on this page, and *particularly* for false positives and false negatives in scan results, please contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
