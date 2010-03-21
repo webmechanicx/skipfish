@@ -61,6 +61,12 @@ For the curious: the root cause is not a security bug in `skipfish`; instead, th
 
 New versions of `skipfish` disable these features to avoid the problem.
 
+==Problem #7: Scan output directory is huge, what is going on?==
+
+In addition to the list of issues found, the directory contains all the noteworthy HTTP requests and responses seen, simply to confirm and document scanner findings. While this may result in a rather sizable blob of data, it does not affect the report-viewing experience in any way.
+
+If you do not want to keep this evidence, you can simply delete all the `*.dat` files recursively.
+
 ==For issues not listed here...==
 
 For any problems not covered on this page, and *particularly* for false positives and false negatives in scan results, please contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
