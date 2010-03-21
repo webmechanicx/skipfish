@@ -6,7 +6,7 @@
 
 ==Problem #1: Compilation fails==
 
-The most common reason for problems is that you do not have a properly configured build environment. Please make sure that you have the following components - and their dependencies - installed:
+The most common reason for problems here is that you do not have a properly configured build environment. Please make sure that you have the following components - and their dependencies - installed:
 
   * [http://gcc.gnu.org/ GNU C Compiler]
   * [http://www.gnu.org/software/make/ GNU Make]
