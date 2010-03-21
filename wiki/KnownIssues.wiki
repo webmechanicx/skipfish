@@ -10,7 +10,7 @@ The most common reason for problems is that you do not have a properly configure
 
   * [http://gcc.gnu.org/ GNU C Compiler]
   * [http://www.gnu.org/software/make/ GNU Make]
-  * [http://www.gnu.org/software/libc/ GNU C Library] development headers
+  * [http://www.gnu.org/software/libc/ GNU C Library] (including development headers)
   * [http://www.zlib.net/ zlib] (including development headers)
   * [http://www.openssl.org/ OpenSSL] (including development headers)
   * [http://www.gnu.org/software/libidn/ libidn] (including development headers)
