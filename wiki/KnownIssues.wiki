@@ -31,8 +31,6 @@ The first thing to check is the number of requests per second displayed by the s
 
 If the reported scan speed is adequate, but the scan of a relatively small site is still taking hours, you can abort it with `Ctrl-C` and examine the generated report. If you notice recursive, nonsensical nodes in the output, or other significant abnormalities, follow the [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! logging build instructions] and contact me to have this fixed. In the meantime, you can use `-r` and `-d` options to set crawl limits, or `-X` to exclude problematic locations.
 
-If something else seems to be wrong, or if the scanner simply crashes, follow the [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! general troubleshooting instructions] and send me a log file.
-
 ==Problem #3: I ran it against a "demo" vulnerable application, and...==
 
 Simulated vulnerable applications are usually very simplistic; consider [http://zero.webappsecurity.com/rootlogin.asp.bak this example] from SPI Dynamics: the script responds to certain predefined path inclusion attempts, e.g. `/etc/passwd`, but not to other, more reasonable probes used in our code.
