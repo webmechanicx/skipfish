@@ -8,12 +8,12 @@
 
 The most common reason for problems is that you do not have a properly configured build environment. Please make sure that you have the following components - and their dependencies - installed:
 
-  * [http://gcc.gnu.org/ GNU C Compiler],
-  * [http://www.gnu.org/software/make/ GNU Make],
-  * [http://www.gnu.org/software/libc/ GNU C Library] development headers,
-  * [http://www.zlib.net/ zlib] (including development headers),
-  * [http://www.openssl.org/ OpenSSL] (including development headers),
-  * [http://www.gnu.org/software/libidn/ libidn] (including development headers).
+  * [http://gcc.gnu.org/ GNU C Compiler]
+  * [http://www.gnu.org/software/make/ GNU Make]
+  * [http://www.gnu.org/software/libc/ GNU C Library] development headers
+  * [http://www.zlib.net/ zlib] (including development headers)
+  * [http://www.openssl.org/ OpenSSL] (including development headers)
+  * [http://www.gnu.org/software/libidn/ libidn] (including development headers)
 
 All the development headers must be in your default include path; several vendors mess this up, in which case, you might need to locate the file using `find`, and provide additional `-I/path/to/inclue/files/` options in `CFLAGS`.
 
