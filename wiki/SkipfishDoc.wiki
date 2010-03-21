@@ -136,7 +136,7 @@ $ ./skipfish -o output_dir http://www.example.com/some/starting/path.txt
 
 Note that you can provide more than one starting URL if so desired; all of them will be crawled.
 
-In the example above, _skipfish_ will scan the entire `www.example.com` (including services on other ports, if linked to from the main page), and write a report to `output_dir/index.html`. You can then view this report with your favorite browser (Java<b></b>Script must be enabled). The `index.html` file is static; actual results are stored as a hierarchy of JSON files, suitable for machine processing if needs be.
+In the example above, _skipfish_ will scan the entire `www.example.com` (including services on other ports, if linked to from the main page), and write a report to `output_dir/index.html`. You can then view this report with your favorite browser (Java<b></b>Script must be enabled; and because of recent `file:///` security improvements in certain browsers, you might need to access results over HTTP). The `index.html` file is static; actual results are stored as a hierarchy of JSON files, suitable for machine processing if needs be.
 
 Some sites may require authentication; for simple HTTP credentials, you can try:
 
