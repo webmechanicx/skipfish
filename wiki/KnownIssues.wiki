@@ -67,7 +67,7 @@ If you do not want to keep this evidence, you can simply delete all the `*.dat` 
 
 Skipfish should not leak any memory, and uses relatively little of it to represent internal data - but it does keep in-memory cache of all crawled documents. The default sample size limit is rather generous: 200 kB. Therefore, if your site consists of 30,000 large videos, you can expect several gigs to be consumed.
 
-There are several simple ways to fix this: use `-I` to narrow down the scan to interesting, dynamic locations on your server; use `-X` to exclude paths with static content tarpits (or skip certain extensions); or use `-s` to limit sample size.
+There are several simple ways to fix this: use `-I` to narrow down the scan to interesting, dynamic locations on your server; use `-X` to exclude paths with static content tarpits (or skip certain extensions); or use `-s` to limit sample size. If nothing helps, you can also simply just throw some more swap space at the scanner.
 
 Ultimately, it would probably make sense to store samples for which all analysis is completed on the disk; patches welcome.
 
