@@ -1,6 +1,6 @@
 #summary Known issues in skipfish
 
-=Common problems and known issues in skipfish=
+=Common problems with skipfish=
 
 *Note: [http://code.google.com/p/skipfish/wiki/SkipfishDoc click here] for general project documentation. This document covers some frequently asked issues with _skipfish_ only.*
 
