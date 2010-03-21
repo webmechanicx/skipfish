@@ -17,13 +17,7 @@ The most common reason for problems here is that you do not have a properly conf
 
 All the development headers must be in your default include path; several vendors mess this up, in which case, you might need to locate the file using `find`, and provide additional `-I/path/to/inclue/files/` options in `CFLAGS`.
 
-Several people also reported problems compiling on certain versions of FreeBSD (but many others had no issues whatsoever). A potential workaround is to edit `alloc-inl.h`, and put this:
-
-{{{
-#include <malloc_np.h>
-}}}
-
-...right after the `#include <stdlib.h>` line. If you had this problem and the workaround helped, please let me know.
+The tool will probably not compile on FreeBSD versions older than 7.0; sorry about that.
 
 ==Problem #2: My scan takes forever==
 
