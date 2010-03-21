@@ -57,7 +57,7 @@ For the curious: the root cause is not a security bug in `skipfish`; instead, th
 
   * The `FORTIFY_SOURCE` feature in GCC is apparently not integrated with `malloc_usable_size()`, and triggers a bogus "buffer overflow" error when this region is accessed, despite being reported as, well, usable.
 
-  * The default allocator settings in FreeBSD - nominally only intended for debugging - clobber this extended region with a 0x5A pattern to detect memory fenceposts.
+  * The default allocator settings in FreeBSD - nominally only intended for debugging - clobber this extended region with a 0x5A pattern to detect memory fenceposts when doing `realloc()`.
 
 New versions of `skipfish` disable these features to avoid the problem.
 
