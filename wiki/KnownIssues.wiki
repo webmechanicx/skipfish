@@ -35,9 +35,11 @@ If something else seems to be wrong, or if the scanner simply crashes, follow th
 
 ==Problem #3: I ran it against a "demo" vulnerable application, and...==
 
-Simulated vulnerable applications are usually very simplistic; consider [http://zero.webappsecurity.com/rootlogin.asp.bak this example] from SPI Dynamics: the script responds to certain predefined path inclusion attempts, e.g. `/etc/passwd`, but not to other, possibly smarter probes.
+Simulated vulnerable applications are usually very simplistic; consider [http://zero.webappsecurity.com/rootlogin.asp.bak this example] from SPI Dynamics: the script responds to certain predefined path inclusion attempts, e.g. `/etc/passwd`, but not to other, more reasonable probes used in our code.
 
-Since journalists and novice users tend to use these test sites as a benchmark for tested products, commercial vendors generally try to account for how these demo sites are designed. With `skipfish`, this seemed to be not particularly productive.
+Some journalists and other non-technical users tend to use these vendor-supplied test sites as a benchmark for tested products; therefore, commercial scanners generally try to account for how these demo sites are designed to score well, even if there is no actual security benefit of doing so. 
+
+With `skipfish`, and we opted to focus on real-world coverage instead. If you run into false negatives or false positives with real targets, please let me know immediately, however!
 
 ==Problem #4: I'm running into display issues==
 
@@ -54,4 +56,3 @@ This is likely because you browsed to the report via `file:///`. Certain importa
 For any problems not covered on this page, and *particularly* for false positives and false negatives in scan results, please contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
 
 Have a look at the general [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! issue reporting tips] to learn how to collect log data or meaningful crash dumps.
-
