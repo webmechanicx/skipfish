@@ -63,7 +63,7 @@ New versions of `skipfish` disable these features to avoid the problem.
 
 ==Problem #7: Scan output directory is huge, what is going on?==
 
-In addition to the list of issues found, the directory contains all the noteworthy HTTP requests and responses seen, simply to confirm and document scanner findings. While this may result in a rather sizable blob of data, it does not affect the report-viewing experience in any way.
+In addition to the list of issues found, the directory contains all the noteworthy HTTP requests and responses seen (including copies of all discovered files), simply to confirm and document scanner findings. While this may result in a rather sizable blob of data, it does not affect the report-viewing experience in any way.
 
 If you do not want to keep this evidence, you can simply delete all the `*.dat` files recursively.
 
