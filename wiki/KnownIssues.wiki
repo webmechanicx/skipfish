@@ -73,6 +73,6 @@ Ultimately, it would probably make sense to store samples for which all analysis
 
 ==For issues not listed here...==
 
-For any problems not covered on this page, and *particularly* for false positives and false negatives in scan results, please contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
+For any problems not covered on this page, and *particularly* for false positives and false negatives in scan results, or endless loops (crawling of `/non-existent/non-existent/non-existent/...`, please contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
 
 Have a look at the general [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! issue reporting tips] to learn how to collect log data or meaningful crash dumps.
