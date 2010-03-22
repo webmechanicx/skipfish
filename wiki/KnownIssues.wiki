@@ -17,7 +17,7 @@ The most common reason for problems here is that you do not have a properly conf
 
 All the development headers must be in your default include path; several vendors mess this up, in which case, you might need to locate the file using `find`, and provide additional `-I/path/to/inclue/files/` options in `CFLAGS`, and `-L/path/to/libraries/` in `LDFLAGS`.
 
-The tool will probably not compile on FreeBSD versions older than 7.0; sorry about that.
+The tool will probably not compile by default on OpenBSD, FreeBSD versions older than 7.0, and other systems without `malloc_usable_size()`; you can work around this by adding `DEBUG_ALLOCATOR=1` to `CFLAGS_GEN` in the `Makefile`, though.
 
 ==Problem #2: My scan takes forever==
 
@@ -37,7 +37,7 @@ Given that `skipfish` is an open-source project with no specific commercial ince
 
 ==Problem #4: I'm running into display issues==
 
-If your terminal is set to use a non-standard palette or a non-standard color scheme (e.g., black-on-white), `skipfish` output may be harder to read, or may revert your custom settings. If this is a problem, edit `config.h` and comment out the `USE_COLORS` line, then recompile.
+If your terminal is set to use a non-standard palette, `skipfish` output may be harder to read. If this is a problem, edit `config.h` and comment out the `USE_COLORS` line, then recompile.
 
 Another problem is that if your terminal is set to 80x25, `skipfish` runtime statistics may not fit the screen neatly. If this is the case, please resize to at least 100x35.
 
