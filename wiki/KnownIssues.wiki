@@ -71,6 +71,12 @@ There are several simple ways to fix this: use `-I` to narrow down the scan to i
 
 Ultimately, it would probably make sense to store samples for which all analysis is completed on the disk; patches welcome.
 
+==Problem #9: The scanner is causing tons of 404 errors==
+
+Well, it's supposed to - an important part of its functionality is brute-force to discover hidden, accidentally exposed resources on the server; a vast majority of these probes will  yield 404s.
+
+That said, you can use the tool for an orderly crawl with no brute-forcing steps; see `dictionaries/README-FIRST` for advice on how to create and use a null dictionary.
+
 ==For issues not listed here...==
 
 For any problems not covered on this page, and *particularly* for false positives and false negatives in scan results, or endless loops (crawling of `/non-existent/non-existent/non-existent/...`, please contact me at [mailto:lcamtuf@google.com lcamtuf@google.com].
