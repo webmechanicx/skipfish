@@ -279,6 +279,8 @@ Below is a list of features currently missing in _skipfish_. If you wish to impr
 
   * Scan resume option.
 
+  * Option to limit document sampling or save samples directly to disk.
+
   * Standalone installation (`make install`) support.
 
   * Config file support.
