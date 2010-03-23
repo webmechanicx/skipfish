@@ -17,7 +17,7 @@ The most common reason for problems here is that you do not have a properly conf
 
 All the development headers must be in your default include path; several vendors mess this up, in which case, you might need to locate the file using `find`, and provide additional `-I/path/to/inclue/files/` options in `CFLAGS`, and `-L/path/to/libraries/` in `LDFLAGS`.
 
-The tool will probably not compile by default on OpenBSD, FreeBSD versions older than 7.0, and other systems without `malloc_usable_size()`; you can work around this by adding `-DDEBUG_ALLOCATOR=1` to `CFLAGS_GEN` in the `Makefile`, though.
+The tool will probably not compile by default on OpenBSD, FreeBSD versions older than 7.0, and other systems without `malloc_usable_size()`; sorry about that.
 
 ==Problem #2: My scan takes forever==
 
