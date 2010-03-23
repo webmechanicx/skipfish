@@ -2,7 +2,7 @@
 
 =Common problems with skipfish=
 
-*Note: [http://code.google.com/p/skipfish/wiki/SkipfishDoc click here] for general project documentation. This document covers some frequently asked issues with _skipfish_ only.*
+*Note: [http://code.google.com/p/skipfish/wiki/SkipfishDoc click here] for general project documentation. This document covers some frequent issues with _skipfish_ only.*
 
 ==Problem #1: Compilation fails==
 
