@@ -121,7 +121,7 @@ Along with a list of identified issues, _skipfish_ also provides summary overvie
   * Server of framework version disclosure,
   * Mere presence of certain technologies, such as WebDAV.
 
-Most of these aspects are easy to inspect using _skipfish_ if so desired - for example, all the HTML forms are listed separately, so are new cookies and various interesting HTTP headers, and the expectation is that the auditor may opt to make certain design recommendations based on this data where appropriate - but these occurrences are not highlighted as a specific security flaw.
+Most of these aspects are easy to inspect in a report if so desired - for example, all the HTML forms are listed separately, so are new cookies or interesting HTTP headers - and the expectation is that the auditor may opt to make certain design recommendations based on this data where appropriate. That said, these occurrences are not highlighted as a specific security flaw.
 
 ==All right, I want to try it out. What do I need to know?==
 
