@@ -264,7 +264,7 @@ If you still need assistance, there are several organizations that put a conside
     * [http://www.owasp.org/index.php/Category:OWASP_Guide_Project OWASP guidelines]
     * [http://www.webappsec.org/projects/articles/ WASC article library]
 
-Although I am happy to diagnose problems with the scanner itself, I regrettably cannot offer any assistance with the inner wokings of third-party web applications.
+Although I am happy to diagnose problems with the scanner itself, I regrettably cannot offer any assistance with the inner workings of third-party web applications.
 
 ==Known limitations / feature wishlist==
 
