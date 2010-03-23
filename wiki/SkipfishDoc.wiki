@@ -98,8 +98,9 @@ A rough list of the security checks offered by the tool is outlined below.
     * All external URL redirectors (optional).
     * Links to unknown protocols.
     * Form fields that could not be autocompleted.
-    * All HTML forms detected.
     * Password entry forms (for external brute-force).
+    * File upload forms.
+    * Other HTML forms (not classified otherwise).
     * Numerical file names (for external brute-force).
     * User-supplied links otherwise rendered on a page.
     * Incorrect or missing MIME type on less significant content.
