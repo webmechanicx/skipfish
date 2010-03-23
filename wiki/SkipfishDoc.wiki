@@ -112,7 +112,7 @@ A rough list of the security checks offered by the tool is outlined below.
 
 Along with a list of identified issues, _skipfish_ also provides summary overviews of document types and issue types found; and an interactive sitemap, with nodes discovered through brute-force denoted in a distinctive way.
 
-As a conscious design decision, _skipfish_ will *not* redundantly alert you to highly non-specific issues commonly reported by other scanners, including but not limited to:
+*NOTE:* As a conscious design decision, _skipfish_ will not redundantly complain about highly non-specific issues, including but not limited to:
 
   * Non-`httponly` cookies,
   * Non-HTTPS or `autocomplete`-enabled forms,
