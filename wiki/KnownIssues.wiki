@@ -35,7 +35,7 @@ Some journalists and other non-technical users tend to use these vendor-supplied
 
 Given that `skipfish` is an open-source project with no specific commercial incentive, I opted to focus on real-world coverage instead.
 
-==Problem #4: I'm running into display issues==
+==Problem #4: I'm having some display issues==
 
 If your terminal is set to use a non-standard palette, `skipfish` output may be harder to read. If this is a problem, edit `config.h` and comment out the `USE_COLORS` line, then recompile.
 
