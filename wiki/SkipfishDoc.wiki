@@ -114,11 +114,12 @@ Along with a list of identified issues, _skipfish_ also provides summary overvie
 
 *NOTE:* As a conscious design decision, _skipfish_ will not redundantly complain about highly non-specific issues, including but not limited to:
 
-  * Non-`httponly` cookies,
+  * Non-`httponly` or non-`secure` cookies,
   * Non-HTTPS or `autocomplete`-enabled forms,
   * HTML comments detected on a page,
   * Filesystem path disclosure in error messages,
   * Server of framework version disclosure,
+  * Servers supporting `TRACE` or `OPTIONS` requests,
   * Mere presence of certain technologies, such as WebDAV.
 
 Most of these aspects are easy to inspect in a report if so desired - for example, all the HTML forms are listed separately, so are new cookies or interesting HTTP headers - and the expectation is that the auditor may opt to make certain design recommendations based on this data where appropriate. That said, these occurrences are not highlighted as a specific security flaw.
