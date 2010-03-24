@@ -77,6 +77,33 @@ Well, it's supposed to - an important part of its functionality is brute-force t
 
 That said, you can use the tool for an orderly crawl with no brute-forcing steps; see `dictionaries/README-FIRST` for advice on how to create and use a null dictionary.
 
+==Problem #10: I am seeing very random false positives and non-existent directories.==
+
+You might have stumbled upon a real bug in _skipfish_ - in this case, see the next section for info on how to report it. That said, but one of the common causes of very erratic scans are web frameworks that start to behave inconsistently under load due to race conditions, backend database limits, and so forth.
+
+Consider this real-world example of a request pattern that led _skipfish_ to assume a shell injection vulnerability:
+
+{{{
+* URL http://127.0.0.1/manual/custom-error.html/'`false`' (200, len 9919)
+* URL http://127.0.0.1/manual/custom-error.html/'`true`' (200, len 9919)
+* URL http://127.0.0.1/manual/custom-error.html/'`uname`' (200, len 8688)
+}}}
+
+The two first responses were identical, and the last one differed significantly. The differential probe did what it was supposed to: underlying vulnerability was the only logical conclusion to make. In reality, the server simply acted up, returning an incomplete page on that last request.
+
+Another example of a similar pattern that caused _skipfish_ to randomly recurse into non-existent directories:
+
+{{{
+* URL http://127.0.0.1/manual/custom-error.html/en/ (200, len 3673)
+* URL http://127.0.0.1/manual/custom-error.html/en/sfi9876 (200, len 7769)
+}}}
+
+To combat this problem, _skipfish_ does some initial behavior checks - by default, sending 15 consecutive vanilla requests to every fuzzed location, and bailing out early if any of the responses is significantly different than the rest. This short test is not always enough to catch more elusive cases: if you want to make this check more sensitive, you can edit `config.h` and raise the `BH_CHECKS` limit to send more probes.
+
+The best way to track down the issue is to examine the scan log and request traces, examine problematic responses to see why they differ, and investigate server logs. If you have a difficulty figuring it out, some manual stress-testing may help. 
+
+Lowering the `-m` parameter may reduce the incidence of such glitches, too.
+
 ==For issues not listed here...==
 
 For any problems not covered on this page, and *particularly* for:
@@ -89,4 +116,4 @@ For any problems not covered on this page, and *particularly* for:
 
 ...*please* contact me at [mailto:lcamtuf@google.com lcamtuf@google.com]. Complaining on Twitter will not get the bug fixed :-)
 
-You may also want to have a look at the general [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! issue reporting tips] to learn how to collect log data or meaningful crash dumps.
+Before filing a report, you may also want to have a look at the general [http://code.google.com/p/skipfish/wiki/SkipfishDoc#Oy!_Something_went_horribly_wrong! issue reporting tips] to learn how to collect log data or meaningful crash dumps.
