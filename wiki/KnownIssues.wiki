@@ -100,7 +100,7 @@ Another example of a similar pattern that caused _skipfish_ to randomly recurse 
 
 When retried later on, both requests return exactly the same data.
 
-To combat this problem, _skipfish_ does some initial server behavior checks - by default, sending 15 consecutive vanilla requests to every fuzzed location, and bailing out early if any of the responses is significantly different than the rest. This short test is not always enough to catch more elusive cases: if you want to make this check more sensitive, you can edit `config.h` and raise the `BH_CHECKS` limit to send more probes, at the expense of prolonging the scan.
+To combat this problem, _skipfish_ does some initial server behavior checks - by default, sending 15 consecutive vanilla requests to every fuzzed location, and bailing out early if any of the responses is significantly different than the rest. This short test is not always enough to catch more elusive cases: if you want to make the check more sensitive, you can edit `config.h` and raise the `BH_CHECKS` limit to send more probes (at the expense of prolonging the scan).
 
 The best way to track down the issue is to examine the scan log and request traces, examine problematic responses to see why they differ, and investigate server logs. If you have a difficulty figuring it out, some manual stress-testing may help. 
 
