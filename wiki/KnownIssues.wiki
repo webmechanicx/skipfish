@@ -79,7 +79,7 @@ That said, you can use the tool for an orderly crawl with no brute-forcing steps
 
 ==Problem #10: I am seeing very random false positives and non-existent directories.==
 
-You might have stumbled upon a real bug in _skipfish_ - in this case, see the next section for info on how to report it. That said, but one of the common causes of very erratic scans are web frameworks that start to behave inconsistently under load due to race conditions, backend database limits, and so forth.
+You might have stumbled upon a real bug in _skipfish_ - in this case, see the next section for info on how to report it. That said, one of the common causes of very erratic scans are web frameworks that start to behave inconsistently under load due to race conditions, backend database limits, and so forth.
 
 Consider this real-world example of a request pattern that led _skipfish_ to assume a shell injection vulnerability:
 
