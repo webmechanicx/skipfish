@@ -27,7 +27,11 @@ If the reported scan speed is adequate, but the scan of a relatively small site 
 
 Lastly, if everything looks OK, and the site is simply very large, consider using the same `-X` and `-I` options to exclude "tarpit" locations with static content that are not worth brute-forcing. The scanner can't tell interesting places from boring ones, but you almost certainly can make this call.
 
-==Problem #3: I tried it against a "demo" vulnerable application, and...==
+==Problem #3: My scan is progressing too fast!==
+
+If you fear overloading the server, you can lower the number of simultaneous connections using the `-m` parameter. If this is still causing too much load, you should be able to use [http://monkey.org/~marius/trickle/ trickle] to limit the bandwidth available to _skipfish_.
+
+==Problem #4: I tried it against a "demo" vulnerable application, and...==
 
 Simulated vulnerable applications are usually very simplistic; consider [http://zero.webappsecurity.com/rootlogin.asp.bak this example] from SPI Dynamics: the script responds to certain predefined path inclusion attempts, e.g. `/etc/passwd`, but not to other, more versatile probes used in our code.
 
@@ -35,27 +39,15 @@ Some journalists and other non-technical users tend to use these vendor-supplied
 
 Given that `skipfish` is an open-source project with no specific commercial incentive, I opted to focus on real-world coverage instead.
 
-==Problem #4: I'm having some display issues.==
+==Problem #5: I'm having some display issues.==
 
 If your terminal is set to use a non-standard palette, `skipfish` output may be harder to read. If this is a problem, edit `config.h` and comment out the `USE_COLORS` line, then recompile.
 
 Another problem is that if your terminal is set to 80x25, `skipfish` runtime statistics may not fit the screen neatly. If this is the case, please resize to at least 100x35.
 
-==Problem #5: I can't view the report in Safari or Chrome.==
+==Problem #6: I can't view the report in Safari or Chrome.==
 
 This is likely because you browsed to the report via the `file:///` protocol. Certain important security improvements implemented in these two browsers have the unfortunate side effect of crippling local Java<b></b>Script. Please put the report in a local WWW root and navigate to `http://localhost/...` instead; or use Firefox.
-
-==Problem #6: "Abort trap" (Linux, MacOS X) or "Bus error" (FreeBSD).==
-
-This should be fixed in the current version of `skipfish`. Try the newest release, and be sure to issue `make clean all`.
-
-For the curious: the root cause is not a security bug in `skipfish`; instead, the sanity-checking allocator used in the code relies on the ability to use the memory between requested `malloc()` buffer size, and the value returned by `malloc_usable_size()`. Unfortunately, certain security mechanisms enabled by default on some OSes are incompatible with this assumption:
-
-  * The `FORTIFY_SOURCE` feature in GCC is apparently not integrated with `malloc_usable_size()`, and triggers a bogus "buffer overflow" error when this region is accessed, despite being reported as, well, usable.
-
-  * The default allocator settings in FreeBSD - nominally only intended for debugging - clobber this extended region with a 0x5A pattern to detect memory fenceposts when doing `realloc()`.
-
-New versions of `skipfish` disable these features to avoid the problem.
 
 ==Problem #7: Scan output directory is huge, what is going on?==
 
