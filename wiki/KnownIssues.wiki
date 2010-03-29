@@ -29,7 +29,7 @@ Lastly, if everything looks OK, and the site is simply very large, consider usin
 
 ==Problem #3: I tried it against a "demo" vulnerable application, and...==
 
-Simulated vulnerable applications are usually very simplistic; consider [http://zero.webappsecurity.com/rootlogin.asp.bak this example] from SPI Dynamics: the script responds to certain predefined path inclusion attempts, e.g. `/etc/passwd`, but not to other, more reasonable probes used in our code.
+Simulated vulnerable applications are usually very simplistic; consider [http://zero.webappsecurity.com/rootlogin.asp.bak this example] from SPI Dynamics: the script responds to certain predefined path inclusion attempts, e.g. `/etc/passwd`, but not to other, more versatile probes used in our code.
 
 Some journalists and other non-technical users tend to use these vendor-supplied test sites as a benchmark for tested products; therefore, commercial scanners generally try to account for how these demo sites are designed to score well, even if there is no actual security benefit of doing so. 
 
