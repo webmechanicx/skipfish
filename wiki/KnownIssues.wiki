@@ -114,6 +114,7 @@ For any problems not covered on this page, and *particularly* for:
   * Scans that recursively descent into non-existing paths (`/foo1/foo2/foo1/foo2/...`),
   * Vulnerabilities that do not seem to be present in reality (false positives),
   * Vulnerabilities missed by the scanner (false negatives),
+  * New vulnerabilities or interesting files it should be checking for,
   * Crashes during a scan.
 
 ...*please* contact me at [mailto:lcamtuf@google.com lcamtuf@google.com]. Complaining on Twitter will not get the bug fixed :-)
