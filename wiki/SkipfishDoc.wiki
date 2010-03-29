@@ -232,6 +232,8 @@ will wait only so long for an individual read or write), and `-t` to set the tot
 
 Lastly, `-f` controls the maximum number of consecutive HTTP errors you are willing to see before aborting the scan; and `-s` sets the maximum length of a response to fetch and parse (longer responses will be truncated).
 
+Further rate-limiting is available through third-party user mode tools such as [http://monkey.org/~marius/trickle/ trickle], or kernel-level traffic shaping.
+
 ==But seriously, how to run it?==
 
 A standard, authenticated scan of a well-designed and self-contained site (warns about all external links, e-mails, mixed content, and caching header issues):
