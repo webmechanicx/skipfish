@@ -234,6 +234,8 @@ Lastly, `-f` controls the maximum number of consecutive HTTP errors you are will
 
 Further rate-limiting is available through third-party user mode tools such as [http://monkey.org/~marius/trickle/ trickle], or kernel-level traffic shaping.
 
+Oh, and real-time scan statistics can be suppressed with `-u`.
+
 ==But seriously, how to run it?==
 
 A standard, authenticated scan of a well-designed and self-contained site (warns about all external links, e-mails, mixed content, and caching header issues):
