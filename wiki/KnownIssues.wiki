@@ -45,6 +45,8 @@ If your terminal is set to use a non-standard palette, `skipfish` output may be 
 
 Another problem is that if your terminal is set to 80x25, `skipfish` runtime statistics may not fit the screen neatly. If this is the case, please resize to at least 100x35.
 
+If you are simply annoyed by the verbose runtime reporting, or are using a slow terminal, you can also use `-u` to suppress all the real-time info.
+
 ==Problem #6: I can't view the report in Safari or Chrome.==
 
 This is likely because you browsed to the report via the `file:///` protocol. Certain important security improvements implemented in these two browsers have the unfortunate side effect of crippling local Java<b></b>Script. Please put the report in a local WWW root and navigate to `http://localhost/...` instead; or use Firefox.
