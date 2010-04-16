@@ -49,7 +49,9 @@ If you are simply annoyed by the verbose runtime reporting, or are using a slow 
 
 ==Problem #6: I can't view the report in Safari or Chrome.==
 
-This is likely because you browsed to the report via the `file:///` protocol. Certain important security improvements implemented in these two browsers have the unfortunate side effect of crippling local Java<b></b>Script. Please put the report in a local WWW root and navigate to `http://localhost/...` instead; or use Firefox.
+This is likely because you browsed to the report via the `file:///` protocol. Certain important security improvements implemented in these two browsers have the unfortunate side effect of crippling local Java<b></b>Script.
+
+In Chrome, you can work around this by passing a command-line option of `--allow-file-access-from-files`. You can also put the report in a local WWW root and navigate to `http://localhost/...` instead; or use Firefox.
 
 ==Problem #7: Scan output directory is huge, what is going on?==
 
