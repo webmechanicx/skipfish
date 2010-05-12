@@ -39,7 +39,7 @@ Simulated vulnerable applications are usually very simplistic; consider [http://
 
 Some journalists and other non-technical users tend to use these vendor-supplied test sites as a benchmark for tested products; therefore, commercial scanners generally try to account for how these demo sites are designed to score well, even if there is no actual security benefit of doing so. 
 
-Given that `skipfish` is an open-source project with no specific commercial incentive, I opted to focus on real-world coverage instead.
+Given that _skipfish_ is an open-source project with no specific commercial incentive, I opted to focus on real-world coverage instead.
 
 ==Problem #5: I'm having some display issues.==
 
