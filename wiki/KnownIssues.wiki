@@ -27,7 +27,7 @@ If the reported scan speed is adequate, but the scan of a relatively small site 
 
 Lastly, if everything looks OK, and the site is simply very large, consider using the same `-X` and `-I` options to exclude "tarpit" locations with static content that are not worth brute-forcing. The scanner can't tell interesting places from boring ones, but you almost certainly can make this call. 
 
-Keep in mind that unlike most other scanners, _skipfish_ does not try to cut corners - it does a full dictionary brute-force on every suitable location, unless explicitly instructed otherwise.
+Keep in mind that unlike most other scanners, _skipfish_ does not try to cut corners without telling you. It does a full dictionary brute-force on every suitable location, unless explicitly instructed otherwise. 
 
 ==Problem #3: My scan is progressing too fast!==
 
