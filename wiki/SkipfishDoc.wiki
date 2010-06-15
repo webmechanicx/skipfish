@@ -186,6 +186,9 @@ pages where a substring appears in response body) to limit the scope of a scan a
 $ ./skipfish -I http://example.com:1234/ ...other parameters...
 }}}
 
+A related function, -K, allows you to specify parameter names not to fuzz
+(useful for applications that put session IDs in the URL, to minimize noise).
+
 Another useful scoping option is `-D` - allowing you to specify additional hosts or domains to consider in-scope for the test. By default, all hosts appearing in the command-line URLs are added to the list - but you can use `-D` to broaden these rules, for example:
 
 {{{
