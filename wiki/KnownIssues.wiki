@@ -100,7 +100,7 @@ When retried later on, both requests return exactly the same data.
 
 To combat this problem, _skipfish_ does some initial server behavior checks - by default, sending 15 consecutive vanilla requests to every fuzzed location, and bailing out early if any of the responses is significantly different than the rest. This short test is not always enough to catch more elusive cases: if you want to make the check more sensitive, you can edit `config.h` and raise the `BH_CHECKS` limit to send more probes (at the expense of prolonging the scan).
 
-The best way to track down the issue is to examine the scan log and request traces, examine problematic responses to see why they differ, and investigate server logs. If you have a difficulty figuring it out, some manual stress-testing may help. Lowering the `-m` parameter may reduce the incidence of such glitches, too.
+The best way to track down the issue is to examine the scan log and request traces, examine problematic responses to see why they differ, and investigate server logs. If you have a difficulty figuring it out, some manual stress-testing may help. Lowering the `-m` parameter may reduce the incidence of such glitches, too; `-Z` option will prevent the crawler from ever descending into HTTP 500 directories, which may help, too.
 
 In some rare cases, the investigation of these false positives may lead you to non-synchronized load-balancing backends, or features that insert random quotes on a page for amusement purposes. My strong recommendation is to correct the underlying problem or disable the QOTD functionality before continuing; if this is not possible, adjusting the `FP_*` values in `config.h` to make the page comparator less pedantic may also help, but will have side effects.
 
