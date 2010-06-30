@@ -87,7 +87,7 @@ Consider this real-world example of a request pattern that led _skipfish_ to ass
 * URL http://127.0.0.1/manual/custom-error.html/'`uname`' (200, len 8688)
 }}}
 
-The two first responses were identical, and the last one differed significantly. The differential probe did what it was supposed to: presence of an underlying vulnerability was the only logical conclusion to make. In reality, the server simply acted up, returning an incomplete page on that last request.
+The two first responses were identical, and the last one differed significantly. The differential probe did what it was supposed to: presence of an underlying vulnerability was the only logical conclusion to make under normal circumstances. In reality, the server simply acted up, returning an incomplete page on that last request.
 
 Another example of a similar pattern that caused _skipfish_ to randomly recurse into non-existent directories:
 
