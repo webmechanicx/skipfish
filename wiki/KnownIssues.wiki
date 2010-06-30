@@ -27,7 +27,7 @@ If the reported scan speed is adequate, but the scan of a relatively small site 
 
 Lastly, if everything looks OK, and the site is simply very large, consider using the same `-X` and `-I` options to exclude "tarpit" locations with static content that are not worth brute-forcing. The scanner can't tell interesting places from boring ones, but you almost certainly can make this call. Quite notably, `/icons/`, `/doc/`, `/examples/`, etc, are not excluded by default - but in many cases, can be.
 
-Keep in mind that unlike most other scanners, _skipfish_ does not try to cut corners without telling you. It does a full dictionary brute-force on every suitable location, unless explicitly instructed otherwise. 
+Keep in mind that unlike most other scanners, _skipfish_ does not try to cut corners without telling you. It does a full dictionary brute-force against every suitable location, unless explicitly instructed otherwise. This also makes it hard to display a reliable ETA: yes, the scanner will sometimes go up to 95%, then drop to 40%. C'est la vie.
 
 ==Problem #3: My scan is progressing too fast!==
 
