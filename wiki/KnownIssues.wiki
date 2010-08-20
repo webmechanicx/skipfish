@@ -102,6 +102,12 @@ The best way to track down the issue is to examine the scan log and request trac
 
 In some rare cases, the investigation of these false positives may lead you to non-synchronized load-balancing backends, or features that insert random quotes on a page for amusement purposes. My strong recommendation is to correct the underlying problem or disable the QOTD functionality before continuing; if this is not possible, adjusting the `FP_*` values in `config.h` to make the page comparator less pedantic may also help, but will have side effects.
 
+==Problem #11: I am really annoyed by the splash screen.==
+
+Sorry; this proved to be necessary - quite a few people were misconfiguring skipfish, and getting a very inaccurate picture of what it does, and why.
+
+You can edit `config.h` and comment out the `SHOW_SPLASH` line, then recompile, to permanently disable this notice.
+
 ==For issues not listed here...==
 
 For any problems not covered on this page, and *particularly* for:
