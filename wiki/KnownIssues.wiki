@@ -104,7 +104,7 @@ In some rare cases, the investigation of these false positives may lead you to n
 
 ==Problem #11: I am really annoyed by the splash screen.==
 
-Sorry; this proved to be necessary - quite a few people were misconfiguring skipfish, getting a very inaccurate picture of what it does, and then complaining about the duration of a scan, or the number of requests made.
+Sorry; this proved to be necessary - quite a few people were misconfiguring skipfish, and then complaining about the duration of a scan, or the number of requests made.
 
 You can edit `config.h` and comment out the `SHOW_SPLASH` line, then recompile, to permanently disable this notice.
 
