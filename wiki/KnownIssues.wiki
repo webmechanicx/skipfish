@@ -108,6 +108,14 @@ Sorry; this proved to be necessary - quite a few people were misconfiguring skip
 
 You can edit `config.h` and comment out the `SHOW_SPLASH` line, then recompile, to permanently disable this notice.
 
+==Problem #12: I don't understand the point of all these MIME- or charset-related warnings.==
+
+Missing or mismatched MIME types on any files with user-controlled contents may easily lead to cross-site scripting flaws. This is because of [http://code.google.com/p/browsersec/wiki/Part2#Survey_of_content_sniffing_behaviors browser content sniffing logic], a problem is particularly pronounced in Microsoft Internet Explorer - where even something as subtle as returning `image/jpeg` on a GIF file may cause HTML detection to be attempted, possibly interpreting any HTML stuffed in the EXIF fields of an otherwise valid image.
+
+The same applies to the absence of valid and unambiguous charset directives; any mistakes may prompt [http://code.google.com/p/browsersec/wiki/Part2#Character_set_handling_and_detection automatic character set detection] in the browser, and some of the character sets that may be detected based on user input will profoundly change the meaning of the document; [http://en.wikipedia.org/wiki/UTF-7 UTF-7] is a striking example of this. Even something as subtle as mistyping `utf-8` as `utf8` may lead to trouble.
+
+That said, in poorly engineered web applications, non-specific MIME mismatch warnings may become too much of a burden. In these cases, you can use the `-J` option to tell the scanner to only complain about cases where user input is clearly visible on the resulting page.
+
 ==For issues not listed here...==
 
 For any problems not covered on this page, and *particularly* for:
@@ -117,6 +125,7 @@ For any problems not covered on this page, and *particularly* for:
   * Vulnerabilities that do not seem to be present in reality (false positives),
   * Vulnerabilities missed by the scanner (false negatives),
   * New vulnerabilities or interesting files it should be checking for,
+  * Cases where MIME types are incorrectly identified on a page,
   * Crashes during a scan.
 
 ...*please* contact me at [mailto:lcamtuf@google.com lcamtuf@google.com]. Complaining on Twitter will not get the bug fixed :-)
