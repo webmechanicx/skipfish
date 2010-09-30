@@ -209,8 +209,7 @@ $ ./skipfish -B .google-analytics.com -B .googleapis.com ...other parameters...
 
 By default, _skipfish_ sends minimalistic HTTP headers to reduce the amount of data exchanged over the wire; some sites examine `User-Agent` strings or header ordering to reject unsupported clients, however. In such a case, you can use `-b ie` or `-b ffox` to mimic one of the two popular browsers.
 
-When it comes to customizing your HTTP requests, you can also use the `-H` option to insert any additional, non-standard headers; or `-F` to define a custom mapping between
-a host and an IP (bypassing the resolver). The latter feature is particularly useful for not-yet-launched or legacy services.
+When it comes to customizing your HTTP requests, you can also use the `-H` option to insert any additional, non-standard headers (including an arbitrary `User-Agent` value); or `-F` to define a custom mapping between a host and an IP (bypassing the resolver). The latter feature is particularly useful for not-yet-launched or legacy services.
 
 Some sites may be too big to scan in a reasonable timeframe. If the site features well-defined tarpits - for example, 100,000 nearly identical user profiles as a part of a social network - these specific locations can be excluded with `-X` or `-S`.  In other cases, you may need to resort to other settings: `-d` limits crawl depth to a specified number of subdirectories; `-c` limits the number of children per directory, `-x` limits the total number of descendants per crawl tree branch; and `-r` limits the total number of requests to send in a scan.
 
