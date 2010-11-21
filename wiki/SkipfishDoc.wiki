@@ -298,7 +298,7 @@ Below is a list of features currently missing in _skipfish_. If you wish to impr
 
   * NTLM and digest authentication.
 
-  * More specific PHP tests (eval injection, RFI).
+  * More specific PHP tests (eval injection, RFI - although this is usually picked up by existing SQL and traversal checks).
 
   * HTTP proxy support: somewhat incompatible with performance control features currently employed by _skipfish_; but in the long run, should be provided as a last-resort option.
 
