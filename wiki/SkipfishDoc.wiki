@@ -119,7 +119,7 @@ Along with a list of identified issues, _skipfish_ also provides summary overvie
   * Password forms on non-HTTPS pages,
   * HTML comments detected on a page,
   * Filesystem path disclosure in error messages,
-  * Server of framework version disclosure,
+  * Server or framework version disclosure,
   * Servers supporting `TRACE` or `OPTIONS` requests,
   * Mere presence of certain technologies, such as WebDAV.
 
