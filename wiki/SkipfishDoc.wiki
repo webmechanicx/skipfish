@@ -112,13 +112,13 @@ A rough list of the security checks offered by the tool is outlined below.
 
 Along with a list of identified issues, _skipfish_ also provides summary overviews of document types and issue types found; and an interactive sitemap, with nodes discovered through brute-force denoted in a distinctive way.
 
-*NOTE:* As a conscious design decision, _skipfish_ will not redundantly complain about highly non-specific issues, including but not limited to:
+*NOTE:* As a conscious design decision, _skipfish_ will not redundantly complain about highly non-specific or no-impact issues, including but not limited to:
 
   * Non-`httponly` or non-`secure` cookies,
   * Non-HTTPS or `autocomplete`-enabled forms,
   * Password forms on non-HTTPS pages,
   * HTML comments detected on a page,
-  * Filesystem path disclosure in error messages,
+  * Filesystem path or internal IP disclosure in error messages,
   * Server or framework version disclosure,
   * Servers supporting `TRACE` or `OPTIONS` requests,
   * Mere presence of certain technologies, such as WebDAV.
