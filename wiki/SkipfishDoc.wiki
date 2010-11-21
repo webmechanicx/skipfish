@@ -58,6 +58,7 @@ A rough list of the security checks offered by the tool is outlined below.
     * Attacker-supplied script and CSS inclusion vectors (stored and reflected).
     * External untrusted script and CSS inclusion vectors.
     * Mixed content problems on script and CSS resources (optional).
+    * Password forms submitting from or to non-SSL pages (optional).
     * Incorrect or missing MIME types on renderables.
     * Generic MIME types on renderables.
     * Incorrect or missing charsets on renderables.
@@ -116,7 +117,6 @@ Along with a list of identified issues, _skipfish_ also provides summary overvie
 
   * Non-`httponly` or non-`secure` cookies,
   * Non-HTTPS or `autocomplete`-enabled forms,
-  * Password forms on non-HTTPS pages,
   * HTML comments detected on a page,
   * Filesystem path or internal IP disclosure in error messages,
   * Server or framework version disclosure,
@@ -225,7 +225,7 @@ and submission steps.
 
 By default, _skipfish_ complains loudly about all MIME or character set mismatches on renderable documents, and classifies many of them as "medium risk"; this is because, if any user-controlled content is returned, the situation could lead to cross-site scripting attacks in certain browsers. On some poorly designed and maintained sites, this may contribute too much noise; if so, you may use `-J` to mark these issues as "low risk" *unless* the scanner can explicitly sees its own user input being echoed back on the resulting page. This may miss many subtle attack vectors, though.
 
-Some sites that handle sensitive user data care about SSL - and about getting it right. _Skipfish_ may optionally assist you in figuring out problematic mixed content scenarios - use the `-M` option to enable this. The scanner will complain about situations such as `http://` scripts being loaded on `https://` pages - but will disregard non-risk scenarios such as images.
+Some sites that handle sensitive user data care about SSL - and about getting it right. _Skipfish_ may optionally assist you in figuring out problematic mixed content or password submission scenarios - use the `-M` option to enable this. The scanner will complain about situations such as `http://` scripts being loaded on `https://` pages - but will disregard non-risk scenarios such as images.
 
 Likewise, certain pedantic sites may care about cases where caching is restricted on HTTP/1.1 level, but no explicit HTTP/1.0 caching directive is given on specifying `-E` in the command-line causes skipfish to log all such cases carefully.
 
