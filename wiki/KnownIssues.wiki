@@ -116,7 +116,7 @@ The same applies to the absence of valid and unambiguous charset directives; any
 
 That said, in poorly engineered web applications, non-specific MIME mismatch warnings may become too much of a burden. In these cases, you can use the `-J` option to tell the scanner to only complain about cases where user input is clearly visible on the resulting page.
 
-==Problem #13: You need to add JavaScript support!==
+==Problem #13: You need to add JS support!==
 
 As should be apparent, _skipfish_ has no elaborate support for Java<b></b>Script - which also means it gets only an average score in <a href="http://code.google.com/p/wivet/">wivet</a> and similar JS-heavy link extraction tests. That said, adding a JS engine to a crawler is a significant undertaking - and I am not entirely convinced that it's worth the effort.
 
