@@ -59,15 +59,15 @@ In Chrome, you can work around this by passing a command-line option of `--allow
 
 In addition to the list of issues found, the directory contains all the noteworthy HTTP requests and responses seen (including copies of all discovered files), simply to confirm and document scanner findings. While this may result in a rather sizable blob of data, it does not affect the report-viewing experience in any way.
 
-If you do not want to keep this evidence, you can simply delete all the `*.dat` files recursively.
+If you do not want to keep this evidence, you can use `-e` to suppress storing and saving the contents of binary files; or simply delete all the `*.dat` files recursively.
 
 ==Problem #8: Memory footprint is huge, what is going on?==
 
 Skipfish should not leak any memory, and uses relatively little of it to represent internal data - but it does keep in-memory cache of all crawled documents. The default sample size limit is rather generous: 200 kB. Therefore, if your site consists of 30,000 large videos, you can expect several gigs to be consumed.
 
-There are several simple ways to fix this: use `-c` or `-x` to limit the number of nodes indexed; `-I` to narrow down the scan to interesting, dynamic locations on your server; use `-X` to exclude paths with static content tarpits (or skip certain extensions); or use `-s` to limit sample size.
+There are several simple ways to fix this: use `-e` to stop the scanner for storing binary files for reporting purposes; specify `-c` or `-x` to limit the number of nodes indexed; `-I` to narrow down the scan to interesting, dynamic locations on your server; use `-X` to exclude paths with static content tarpits (or skip certain extensions); or provide `-s` to limit sample size.
 
-Ultimately, it would probably make sense to store samples for which all analysis is completed on the disk; patches welcome.
+Ultimately, it would probably make sense to store samples for which all analysis is completed on the disk, rather than in memory; patches welcome.
 
 ==Problem #9: The scanner is causing tons of 404 errors!==
 
@@ -115,8 +115,6 @@ You can edit `config.h` and comment out the `SHOW_SPLASH` line, then recompile, 
 Missing or mismatched MIME types on any files with user-controlled contents may easily lead to cross-site scripting flaws. This is because of [http://code.google.com/p/browsersec/wiki/Part2#Survey_of_content_sniffing_behaviors browser content sniffing logic], a problem is particularly pronounced in Microsoft Internet Explorer - where even something as subtle as returning `image/jpeg` on a GIF file may cause HTML detection to be attempted, possibly interpreting any HTML stuffed in the EXIF fields of an otherwise valid image.
 
 The same applies to the absence of valid and unambiguous charset directives; any mistakes may prompt [http://code.google.com/p/browsersec/wiki/Part2#Character_set_handling_and_detection automatic character set detection] in the browser, and some of the character sets that may be detected based on user input will profoundly change the meaning of the document; [http://en.wikipedia.org/wiki/UTF-7 UTF-7] is a striking example of this. Even something as subtle as mistyping `utf-8` as `utf8` may lead to trouble.
-
-That said, in poorly engineered web applications, non-specific MIME mismatch warnings may become too much of a burden. In these cases, you can use the `-J` option to tell the scanner to only complain about cases where user input is clearly visible on the resulting page.
 
 ==Problem #13: You need to add JS support!==
 
