@@ -223,8 +223,6 @@ Some particularly complex (or broken) services may involve a very high number of
 In certain quick assessments, you might also have no interest in paying any particular attention to the desired functionality of the site - hoping to explore non-linked secrets only. In such a case, you may specify `-P` to inhibit all HTML parsing. This limits the coverage and takes away the ability for the scanner to learn new keywords by looking at the HTML, but speeds up the test dramatically. Another similarly crippling option that reduces the risk of persistent effects of a scan is `-O`, which inhibits all form parsing
 and submission steps.
 
-By default, _skipfish_ complains loudly about all MIME or character set mismatches on renderable documents, and classifies many of them as "medium risk"; this is because, if any user-controlled content is returned, the situation could lead to cross-site scripting attacks in certain browsers. On some poorly designed and maintained sites, this may contribute too much noise; if so, you may use `-J` to mark these issues as "low risk" *unless* the scanner can explicitly sees its own user input being echoed back on the resulting page. This may miss many subtle attack vectors, though.
-
 Some sites that handle sensitive user data care about SSL - and about getting it right. _Skipfish_ may optionally assist you in figuring out problematic mixed content or password submission scenarios - use the `-M` option to enable this. The scanner will complain about situations such as `http://` scripts being loaded on `https://` pages - but will disregard non-risk scenarios such as images.
 
 Likewise, certain pedantic sites may care about cases where caching is restricted on HTTP/1.1 level, but no explicit HTTP/1.0 caching directive is given on specifying `-E` in the command-line causes skipfish to log all such cases carefully.
@@ -239,6 +237,8 @@ There is also a handful of performance-related options. Use `-g` to set the maxi
 will wait only so long for an individual read or write), and `-t` to set the total request timeout, to account for really slow or really fast sites.
 
 Lastly, `-f` controls the maximum number of consecutive HTTP errors you are willing to see before aborting the scan; and `-s` sets the maximum length of a response to fetch and parse (longer responses will be truncated).
+
+When scanning large, multimedia-heavy sites, you may also want to specify `-e`. This prevents binary documents from being kept in memory for reporting purposes, freeing up a lot of RAM.
 
 Further rate-limiting is available through third-party user mode tools such as [http://monkey.org/~marius/trickle/ trickle], or kernel-level traffic shaping.
 
