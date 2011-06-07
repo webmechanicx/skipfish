@@ -150,7 +150,11 @@ Once you have the dictionary selected, you can try:
 $ ./skipfish -o output_dir http://www.example.com/some/starting/path.txt
 }}}
 
-Note that you can provide more than one starting URL if so desired; all of them will be crawled.
+Note that you can provide more than one starting URL if so desired; all of them will be crawled. You can also read a list of URLs from a file using this syntax:
+
+{{{
+$ ./skipfish -o output_dir @/path/to/url_list.txt
+}}}
 
 The tool will display some helpful stats while the scan is in progress. You
 can also switch to a list of in-flight HTTP requests by pressing return.
