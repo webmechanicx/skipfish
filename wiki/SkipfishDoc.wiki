@@ -303,7 +303,7 @@ Below is a list of features currently missing in _skipfish_. If you wish to impr
 
   * More specific PHP tests (eval injection, RFI - although this is usually picked up by existing SQL and traversal checks).
 
-  * HTTP proxy support: somewhat incompatible with performance control features currently employed by _skipfish_; but in the long run, should be provided as a last-resort option.
+  * HTTP proxy support: an experimental HTTP proxy support is available through a directive in config.h. Adding support for HTTPS proxying is more complicated, and still in the works.
 
   * SOCKS proxy support: you may have luck with [http://tsocks.sourceforge.net/ tsocks] for this purpose, though.
 
