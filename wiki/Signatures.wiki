@@ -19,6 +19,30 @@ If you have a nice new signature or if you are able to optimize an existing one:
 
 [https://code.google.com/p/skipfish/issues/entry?template=Content%20signatures]
 
+= Signature file format =
+
+Empty lines or lines starting with a # are skipped by the parser.  All other lines are expected to be signatures.
+
+Signature files can use the "include" directive to include other files. This makes it easy to group signatures in different files and include ones you are interested in.
+
+An example
+
+{{{
+
+# Include another signature file
+include signatures/mime.sigs
+
+# A signature to detect phpinfo() pages
+id:11001; sev:3; content:"<title>phpinfo()</title><meta name="; depth:2048; memo:"phpinfo() page";
+
+# A signature to a PHP source response
+id:41003; sev:4; mime:"application/x-httpd-php-source"; memo:"PHP source file (mime)";
+
+# A signature to detect a PHP error
+id:22008; prob:40402; content:"<b>Fatal error</b>: "; content:"</b> on line <b>"; depth:512;  memo:"PHP error (HTML)";
+
+
+}}}
 
 = Signature keywords =
 
@@ -111,30 +135,6 @@ Usage id:`<int>`
 
 The unique signature ID. Currently this is for documentation purpose only but in the future we'll probably add signature chaining which requires unique ID's as well.
 
-= Signature file format =
-
-Empty lines or lines starting with a # are skipped by the parser.  All other lines are expected to be signatures.
-
-Signature files can use the "include" directive to include other files. This makes it easy to group signatures in different files and include ones you are interested in.
-
-An example
-
-{{{
-
-# Include another signature file
-include signatures/mime.sigs
-
-# A signature to detect phpinfo() pages
-id:11001; sev:3; content:"<title>phpinfo()</title><meta name="; depth:2048; memo:"phpinfo() page";
-
-# A signature to a PHP source response
-id:41003; sev:4; mime:"application/x-httpd-php-source"; memo:"PHP source file (mime)";
-
-# A signature to detect a PHP error
-id:22008; prob:40402; content:"<b>Fatal error</b>: "; content:"</b> on line <b>"; depth:512;  memo:"PHP error (HTML)";
-
-
-}}}
 
 
 =Upcoming=
