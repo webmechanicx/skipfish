@@ -14,6 +14,7 @@ The most common reason for problems here is that you do not have a properly conf
   * [http://www.zlib.net/ zlib] (including development headers)
   * [http://www.openssl.org/ OpenSSL] (including development headers)
   * [http://www.gnu.org/software/libidn/ libidn] (including development headers)
+  * [http://www.pcre.org/ libpcre] (including development headers)
 
 All the development headers must be in your default include path; several vendors mess this up, in which case, you might need to locate the file using `find`, and provide additional `-I/path/to/inclue/files/` options in `CFLAGS`, and `-L/path/to/libraries/` in `LDFLAGS`.
 
