@@ -1160,7 +1160,7 @@ void load_keywords(u8* fname, u8 read_only, u32 purge_age) {
     if (read_only)
       PFATAL("Unable to open read-only wordlist '%s'.", fname);
     else
-      PFATAL("Unable to open read-write wordlist '%s' (see dictionaries/README-FIRST).", fname);
+      PFATAL("Unable to open read-write wordlist '%s' (see doc/dictionaries.txt).", fname);
   }
 
   sprintf(fmt, "%%2s %%u %%u %%u %%%u[^\x01-\x1f]", MAX_WORD);
