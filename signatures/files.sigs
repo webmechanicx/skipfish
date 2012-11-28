@@ -94,7 +94,7 @@ id:32002; sev:3; memo:"C/C++ source"; \
           content:"\n#include"; depth:512;
 id:32003; sev:3; memo:"Shell script"; \
           content:"#!/"; depth:1;
-id:32004; sev:3; memo:"PHP source";
+id:32004; sev:3; memo:"PHP source"; \
           content:!"# ?>"; \
           content:!"<?import"; \
           content:"<?"; \
