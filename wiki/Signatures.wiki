@@ -1,7 +1,7 @@
 #summary Content signatures details
 #labels Featured
 
-<wiki:toc max_depth="2" />
+<wiki:toc max_depth="3" />
 
 = Introduction =
 
