@@ -88,6 +88,8 @@ In a signature that has multiple content strings, static strings can be mixed wi
 
 ===content modifier: nocase===
 
+Usage: content:`"<string>"`; nocase;
+
 When "nocase" is specified, the content string is matched without case
 sensitivity.
 
