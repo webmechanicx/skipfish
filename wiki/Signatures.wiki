@@ -25,7 +25,7 @@ Empty lines or lines starting with a # are skipped by the parser.  All other lin
 
 Signature files can use the "include" directive to include other files. This makes it easy to group signatures in different files and include ones you are interested in.
 
-An example
+A few simple examples:
 
 {{{
 
@@ -33,16 +33,22 @@ An example
 include signatures/mime.sigs
 
 # A signature to detect phpinfo() pages
-id:11001; sev:3; content:"<title>phpinfo()</title><meta name="; depth:2048; memo:"phpinfo() page";
+id:11001; sev:3; content:"<title>phpinfo()</title><meta name="; depth:2048; \
+                 memo:"phpinfo() page";
 
 # A signature to a PHP source response
-id:41003; sev:4; mime:"application/x-httpd-php-source"; memo:"PHP source file (mime)";
+id:41003; sev:4; mime:"application/x-httpd-php-source"; \
+                 memo:"PHP source file (mime)";
 
 # A signature to detect a PHP error
-id:22008; prob:40402; content:"<b>Fatal error</b>: "; content:"</b> on line <b>"; depth:512;  memo:"PHP error (HTML)";
-
+id:22008; prob:40402; content:"<b>Fatal error</b>: "; \
+                      content:"</b> on line <b>"; depth:512; \
+                      memo:"PHP error (HTML)";
 
 }}}
+
+A lot more examples can be found in the signature files we ship:
+http://code.google.com/p/skipfish/source/browse/trunk/signatures/apps.sigs
 
 = Signature keywords =
 
