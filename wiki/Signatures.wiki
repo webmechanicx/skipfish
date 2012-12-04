@@ -86,6 +86,21 @@ Indicates whether the content string should be treated as a regular expression o
 
 In a signature that has multiple content strings, static strings can be mixed with regular expressions. You'll likely get the best performance by starting with a static string before applying a regular expression.
 
+===content modifier: nocase===
+
+When "nocase" is specified, the content string is matched without case
+sensitivity.
+
+This keyword requires no value.
+
+==header==
+
+Usage header:`"<header name>"`
+
+By default signature matching is performed on the respose body. By specifying a header name using the "header" keyword, this behavior is changed: the matching will occur on the header value.
+
+The header name is not case sensitive and header signatures are treated exactly the same as content signatures meaning that you can use multiple content strings and their modifiers.
+
 ==mime==
 
 Usage mime:`"<string>"`
@@ -135,12 +150,25 @@ Usage id:`<int>`
 
 The unique signature ID. Currently this is for documentation purpose only but in the future we'll probably add signature chaining which requires unique ID's as well.
 
+==depend==
 
+Usage depend:`<int>`
 
-=Upcoming=
+A signature can be made dependent on another signature by specifying it's signature ID as the value of this keyword. This means that the signature will be skipped unless the dependent signature was successfully matched already.
 
-Amongst other changes, it's likely that the next release will have the following keywords implemented:
+One example use case could be a global signature that identifies a framework, say Wordpress, and dependent signatures that detect WordPress specific issues.
 
- * nocase  - for case insensitive matching
- * ssl     - match against SSL responses only
- * header  - match against a specific header 
+==proto==
+
+Usage proto:`"[http|https]"`
+
+The "proto" keyword can be used to make a signature only applicable for either "http" or "https" type URLs.
+This changes the default behavior where every signature is applied to both http and https URLs.
+
+==report==
+
+Usage report:`"[once|always]"`
+
+Some signatures are to find host specific problems and only need to be reported once. This can be achieved by using report:"once";
+
+This keywords default value is "always".
