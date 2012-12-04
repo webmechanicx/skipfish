@@ -13,13 +13,31 @@ With form authentication, skipfish will submit credentials using the given login
 
 An important feature of the form authentication is that skipfish will re-authenticate in the event the server terminates our session.
 
-An example to login using this feature:
+An example command-line to login using this feature:
 {{{
 $ ./skipfish --auth-form http://example.org/login \
              --auth-user myuser \
              --auth-pass mypass \
              --auth-verify-url http://example.org/profile \
              [...other options...]
+}}}
+
+An example configuration file / snippet to accomplish the same:
+
+{{{
+
+$ cat mylogin.conf 
+# Specify the location of the login form
+auth-form = https://example.com/login
+
+# Specify the username and password.
+auth-user = skipfish@gmail.com
+auth-pass = skipfish
+
+# The URL to verify authentication
+auth-verify-url = https://example.com/profile
+
+$ ./skipfish --config mylogin.conf -o output_dir http://example.com
 }}}
 
 == How it works ==
