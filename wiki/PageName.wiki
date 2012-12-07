@@ -14,7 +14,7 @@ Running a scan with a config file looks like this:
 $ ./skipfish --config path/to/config.cfg [..other options..] http://example.org
 }}}
 
-As you can see, the configuration file can still be combined with command-line flags. When doing so, please keep in mind that configuration settings are treated exactly the same as flags. This means that, for example, a flag that is only allowed (e.g. output directory) should not be set both in the config and on the command-line.
+The example above shows that the configuration file can still be combined with command-line flags. When doing so, please keep in mind that configuration entries are treated as long flags. This means that, for example, a flag that is only allowed to be set once (e.g. -o to specify the output directory) should not be set both in the config and on the command-line.
 
 Interested? Check out the [https://code.google.com/p/skipfish/source/browse/trunk/config/example.conf example.cfg] file to see all configurable options.
 
