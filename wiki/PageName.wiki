@@ -1,0 +1,40 @@
+#summary What's new in the latest release
+== What's new in the latest release ==
+
+This page highlights some new features we implemented in skipfish 2.10b. It certainly is not intended to be complete; we have the [https://code.google.com/p/skipfish/source/browse/trunk/ChangeLog ChangeLog] for that.
+
+
+==== Configuration file support ====
+As of 2.10b you can start using configuration files! Say bye bye to the long command-line and instead, simply create a copy the [https://code.google.com/p/skipfish/source/browse/trunk/config/example.conf config/example.cfg] file and modify it for your needs.
+
+Running a scan with a config file looks like this:
+
+{{{
+$ ./skipfish --config path/to/config.cfg [..other options..] http://example.org
+}}}
+
+As you can see, the configuration file can still be combined with command-line flags. When doing so, please keep in mind that configuration settings are treated exactly the same as flags. This means that, for example, a flag that is only allowed (e.g. output directory) should not be set both in the config and on the command-line.
+
+Interested? Check out the [https://code.google.com/p/skipfish/source/browse/trunk/config/example.conf example.cfg] file to see all configurable options.
+
+==== User-agent testing ====
+
+Many websites have pages that behave differently when requested with a certain user-agent. For example, a mobile browser often gets a different response than a desktop browser. A different response often means different server logic and therefore requires additional testing.
+
+Skipfish 2.10b will now test every page for user-agent specific behavior and will then schedule all injection tests for each of the detected user-agents. 
+
+The agents we currently test with are skipfish, Firefox, Internet Explorer and iPhone. More will be added soon.
+
+==== Disk flushing ====
+The memory consumption can get quite high when scanning large web sites  even when using -e to discard binary responses. You can now use the --flush-to-disk flag in order to have skipfish flush server response data to disk. This will keep the memory consumption of every scan very low (e.g. 20MB for a scan that consumed 300MB).
+
+An example command-line:
+{{{
+$ ./skipfish --flush-to-disk [..other options..] http://example.org
+}}}
+
+Note that the total amount of pages crawled in combination with the amount of detected issues will always influence memory consumption.
+
+==== Updated LFI / RFI tests ====
+
+The local file inclusion tests now use different types of encoding  (e.g. double encoding and the web.xml disclosure test has been updated to try different traversal depth (Java apps are picky).
