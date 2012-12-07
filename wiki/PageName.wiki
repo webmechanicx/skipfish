@@ -30,4 +30,8 @@ Note that the total amount of pages crawled in combination with the amount of de
 
 ==== Updated LFI / RFI tests ====
 
-The local file inclusion tests now use different types of encoding  (e.g. double encoding and the web.xml disclosure test has been updated to try different traversal depth (Java apps are picky).
+The local file inclusion tests now use different types of encoding (e.g. double encoding).  
+
+Also in many cases, tests for web.xml failed due to Java applications requiring a payload that is an exact match with the path distance between the vulnerable page and web.xml. To overcome this we start now incrementally increase the traversal depth which gives a much higher chance to actually access the file.
+
+Last but not least, the remote file inclusion is no longer a compile time option and instead enabled by default. If you don't like this option, you can use --checks-toggle to turn it off (or do the same in your config file). Additionally do note that the RFI URL and test string can be changed in [https://code.google.com/p/skipfish/source/browse/trunk/src/config.h#164 config.h].
